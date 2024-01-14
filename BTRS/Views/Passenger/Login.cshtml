@@ -1,0 +1,58 @@
+﻿@model BTRS.Models.Login
+@using (Html.BeginForm("Login", "Passenger", FormMethod.Post, new { @class = "container mt-5" }))
+{
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <title>Login</title>
+        <style>
+            body {
+                background-color: #DDB62C;
+            }
+
+            .card {
+                background-color: #ffffff;
+                border: 1px solid #d1d1d1;
+            }
+
+            .btn-primary {
+                background-color: #DDB62C;
+                border-color: #DDB62C;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Login</h2>
+                        <form class="form">
+                            <div class="form-group">
+                                <label for="Username">Username</label>
+                                @Html.TextBox("Username", null, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Password">Password</label>
+                                @Html.TextBox("Password", null, new { @class = "form-control", @Type = "password" })
+                                @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            @Html.ActionLink("SignUp", "SignUp", new { @class = "btn btn-link" })
+                        </div>
+                        @TempData["Msg"]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+}

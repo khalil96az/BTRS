@@ -1,0 +1,84 @@
+﻿@model BTRS.Models.Passenger
+@using (Html.BeginForm("SignUp", "Passenger", FormMethod.Post, new { @class = "container mt-5" }))
+{
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <title>Sign Up</title>
+        <style>
+            body {
+                background-color: #DDB62C;
+            }
+
+            .card {
+                background-color: #ffffff;
+                border: 1px solid #d1d1d1;
+            }
+
+            .btn-primary {
+                background-color: #DDB62C;
+                border-color: #DDB62C;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Sign Up</h2>
+                        <form class="form">
+                            <div class="form-group">
+                                <label for="Name">Name</label>
+                                @Html.TextBox("Name", null, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Password">Password</label>
+                                @Html.TextBox("Password", null, new { @class = "form-control", @Type = "password" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Email">Email</label>
+                                @Html.TextBox("Email", null, new { @class = "form-control", @Type = "EmailAddress" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Phone">Phone</label>
+                                @Html.TextBox("Phone", null, new { @class = "form-control", @Type = "Phone" })
+                                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Username">Username</label>
+                                @Html.TextBox("Username", null, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <div class="form-check">
+                                    @Html.RadioButton("Gender", "Male", false, new { id = "male", @class = "form-check-input" })
+                                    <label class="form-check-label" for="male">Male</label>
+                                </div>
+                                <div class="form-check">
+                                    @Html.RadioButton("Gender", "Female", true, new { id = "female", @class = "form-check-input" })
+                                    <label class="form-check-label" for="female">Female</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            @Html.ActionLink("Have An AccountT?", "Login", new { @class = "btn btn-link" })
+                        </div>
+                        @TempData["Msg"]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+}
